@@ -14,11 +14,11 @@ public class TP2_Bieres_Zavarella {
     public static void main(String[] args) {
         
        BouteilleBiere uneBiere = new BouteilleBiere();
-       uneBiere.Nom = "Cuvee des Trolls";
-       uneBiere.degreAlcool = 7.0;
-       uneBiere.brasserie = "Dubuisson";
-       uneBiere.ouverte = false;
-       
+       //uneBiere.Nom = "Cuvee des Trolls";
+       //uneBiere.degreAlcool = 7.0;
+       //uneBiere.brasserie = "Dubuisson";
+       //uneBiere.ouverte = false;
+       uneBiere.lireEtiquette();
        
        BouteilleBiere uneBiere2 = new BouteilleBiere();
        uneBiere2.Nom = "leffe";
@@ -26,6 +26,9 @@ public class TP2_Bieres_Zavarella {
        uneBiere2.brasserie = "Abbaye de Leffe";
        uneBiere2.ouverte = false;
        uneBiere2.lireEtiquette();
+       
+       BouteilleBiere Biere1664 = new BouteilleBiere(unNom: "1664", unDegre:6.1, uneBrasserie:"LaTour");
+       Biere1664.lireEtiquette();
        
     }
 }
