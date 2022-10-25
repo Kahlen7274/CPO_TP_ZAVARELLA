@@ -9,22 +9,27 @@ package com.mycompany.tp1_convertisseur_zavarella_matteo;
  * @author matte
  */
 public class Convertisseurtemp {
-
-    // On crée la variable
-    int nbConvertions;
-
-    public int Convertions() {
-        nbConvertions = 0;
-        // Methode pour convertir Kelvin en Celsius
+     
+    // Crétions de la variable compteur dans le constructeur
+    public Convertisseurtemp (){
+        int nbConversions;
+        nbConversions = 0;
     }
     
+    // Methode qui retourne le nombre de conversions effectuées
+    @Override
+    public String toString() {
+        return "nb de conversions" + nbConversions;
+    }
+    
+    // Methode pour convertir Kelvin en Celsius   
     public double CelsiusVersKelvin(double tCelsius) {
         double K = tCelsius + 273.15;
         System.out.println("Votre temperature en Kelvin est: " + K);
         return K;
     }
+    
     // Methode pour convertir Celsius en Kelvin
-
     public double KelvinVersCelsius(double tKelvin) {
         double C = tKelvin - 273.15;
         System.out.println("Votre temperature en Kelvin est: " + C);
@@ -57,11 +62,5 @@ public class Convertisseurtemp {
         double K = (tFahrenheit - 32) * 5 / 9 + 273.15;
         System.out.println("Votre temperature en Kelvin est: " + K);
         return K;
-    }
-
-    // Methode qui retourne le nombre de conversions effectuées
-    @Override
-    public String toString() {
-        return "nb de conversions" + nbConvertions;
     }
 }
