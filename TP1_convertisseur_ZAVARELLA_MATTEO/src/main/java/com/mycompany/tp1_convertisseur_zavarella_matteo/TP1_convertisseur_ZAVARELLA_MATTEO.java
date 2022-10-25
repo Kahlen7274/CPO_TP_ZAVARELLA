@@ -17,12 +17,18 @@ public class TP1_convertisseur_ZAVARELLA_MATTEO {
             
 
     public static void main(String[] args) {
+        
+        // Affichage utilisateur
         System.out.println("Entrer une temperature: ");
         Double Temp = sc.nextDouble(); // Stock la valeur saisie
         
         // Appelle de la classe convertisseur
-        Convertisseurtemp TempK = new Convertisseurtemp();
-        TempK.CelciusVersKelvin(Temp);
+        Convertisseurtemp TempConv = new Convertisseurtemp();
+        //TempConv.CelsiusVersKelvin(Temp);
+        //TempConv.FahrenheitVersCelsius(Temp);
+        //TempConv.CelsiusVersFahrenheit(Temp);
+        //TempConv.KelvinVersFahrenheit(Temp);
+        //TempConv.FahrenheitVersKelvin(Temp);
          
     }
 }
