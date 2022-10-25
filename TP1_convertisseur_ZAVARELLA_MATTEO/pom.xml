@@ -11,4 +11,5 @@
         <maven.compiler.target>19</maven.compiler.target>
         <exec.mainClass>com.mycompany.tp1_convertisseur_zavarella_matteo.TP1_convertisseur_ZAVARELLA_MATTEO</exec.mainClass>
     </properties>
+    <name>TP2_convertisseurObjet_ZAVARELLA_MATTEO</name>
 </project>
