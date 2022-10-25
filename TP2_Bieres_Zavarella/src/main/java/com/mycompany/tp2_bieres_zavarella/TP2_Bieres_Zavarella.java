@@ -14,10 +14,12 @@ public class TP2_Bieres_Zavarella {
     public static void main(String[] args) {
         
        BouteilleBiere uneBiere = new BouteilleBiere("Cuvee des Trolls", 7.0, "Dubuisson");
+       // On affecte des valeurs aux attributs de notre objet
        //uneBiere.Nom = "Cuvee des Trolls";
        //uneBiere.degreAlcool = 7.0;
        //uneBiere.brasserie = "Dubuisson";
        //uneBiere.ouverte = false;
+       // Appelle des méthodes
        uneBiere.ouverte = false;
        uneBiere.lireEtiquette();
        System.out.println(uneBiere);

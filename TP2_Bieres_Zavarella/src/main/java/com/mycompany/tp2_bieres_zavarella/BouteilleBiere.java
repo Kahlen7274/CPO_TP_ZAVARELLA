@@ -16,10 +16,12 @@ public class BouteilleBiere {
 
     
 public void lireEtiquette(){
+    // On crée une méthode permettant d'afficher à l’écran les informations contenues sur l’étiquette de la bouteille de bière
     System.out.println("Bouteille de " + Nom + " (" + degreAlcool + "degres) \nBrasserie : " + brasserie);
 }  
 
 public void Décapsuler(){
+    // Méthode permettant de savoir si une biere est décapsuler
     if (ouverte == true) {
         System.out.println("La biere est déjà ouverte");
     }
@@ -29,7 +31,9 @@ public void Décapsuler(){
     }
 }
 
+// On crée une méthode permettant de créer un objet et initialiser ses paramètres juste avec une ligne
 public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) {
+    // Ajout du constructeur
     Nom = unNom;
     degreAlcool = unDegre;
     brasserie = uneBrasserie;
@@ -39,6 +43,7 @@ public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) {
 @Override
 
 public String toString() {
+    // La méthode toString() permet de retourner la chaine de caractère que l’on veut afficher quand l’objet est cité
     String chaine_a_retourner ;
     chaine_a_retourner = Nom + " (" + degreAlcool + " degres) Ouverte ?";
     if (ouverte == true) chaine_a_retourner += "oui" ;
