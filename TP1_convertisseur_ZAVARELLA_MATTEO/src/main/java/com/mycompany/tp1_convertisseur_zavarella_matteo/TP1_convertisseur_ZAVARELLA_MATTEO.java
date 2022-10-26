@@ -19,6 +19,7 @@ public class TP1_convertisseur_ZAVARELLA_MATTEO {
     public static void main(String[] args) {
         
         // Affichage utilisateur
+        
         System.out.println("Entrer une temperature: ");
         Double Temp = sc.nextDouble(); // Stock la valeur saisie
         System.out.println("""
@@ -34,6 +35,8 @@ public class TP1_convertisseur_ZAVARELLA_MATTEO {
         
         // Appelle de la classe convertisseur
         Convertisseurtemp TempConv = new Convertisseurtemp();
+             
+        // Condition de conversion et choix utilisateur
         
         if (Conv == 1){
            double k;
@@ -70,6 +73,11 @@ public class TP1_convertisseur_ZAVARELLA_MATTEO {
            f = TempConv.CelsiusVersFahrenheit(Temp);
            System.out.println(Temp + " degré celsius est égal à " + f +" degré fahrenheit");
         }
+        
+        // Affichage de la variable compteur
+        String Comp;
+        Comp = TempConv.toString();
+        System.out.println(Comp);
         
         //TempConv.CelsiusVersKelvin(Temp);
         //TempConv.FahrenheitVersCelsius(Temp);
