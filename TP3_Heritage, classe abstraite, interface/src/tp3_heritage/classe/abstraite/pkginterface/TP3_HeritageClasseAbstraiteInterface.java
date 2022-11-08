@@ -15,7 +15,7 @@ public class TP3_HeritageClasseAbstraiteInterface {
      */
     public static void main(String[] args) {
         
-        Arme arme1 = new Arme("stormbreaker", 15);
+        Arme arme1 = new Arme("stormbreaker", 150);
         System.out.println(arme1);
     }
     
