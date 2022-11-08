@@ -13,8 +13,8 @@ public class Baton extends Arme{
     
     public Baton(String nom, int ATQ, int a){
         super(nom, ATQ);
-        if(a > 0) age = a;
-        else age = 0;
+        if(a > 100) age = 99;
+        else age = a;
     }
     
 }
