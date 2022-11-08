@@ -8,6 +8,9 @@ package tp3_heritage.classe.abstraite.pkginterface;
  *
  * @author matte
  */
+import Armes.Epée;
+import Armes.Baton;
+import Armes.Arme;
 import java.util.ArrayList; // import la classe arraylist
 
 public class TP3_HeritageClasseAbstraiteInterface {

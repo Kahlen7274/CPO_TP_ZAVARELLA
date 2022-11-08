@@ -1,4 +1,4 @@
-package tp3_heritage.classe.abstraite.pkginterface;
+package Armes;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,8 +17,14 @@ public class Arme {
     
     public Arme(String unNom, int nivATQ) {
         // Ajout du constructeur
-        Nom = unNom;
-        ATQ = nivATQ;
+        if(nivATQ > 100){
+           Nom = unNom;
+           ATQ = 100;
+        }
+        else{
+            Nom = unNom;
+            ATQ = nivATQ;
+        }
     }
     
     @Override
