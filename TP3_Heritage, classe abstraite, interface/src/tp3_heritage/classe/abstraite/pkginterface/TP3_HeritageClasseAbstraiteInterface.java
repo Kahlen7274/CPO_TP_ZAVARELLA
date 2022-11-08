@@ -14,7 +14,9 @@ public class TP3_HeritageClasseAbstraiteInterface {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Arme arme1 = new Arme("stormbreaker", 15);
+        System.out.println(arme1);
     }
     
 }
