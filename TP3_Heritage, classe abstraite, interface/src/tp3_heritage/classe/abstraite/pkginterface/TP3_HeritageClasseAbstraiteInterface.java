@@ -15,8 +15,17 @@ public class TP3_HeritageClasseAbstraiteInterface {
      */
     public static void main(String[] args) {
         
-        Arme arme1 = new Arme("stormbreaker", 150);
+        Epée arme1 = new Epée("Excalibur", 7,5);
         System.out.println(arme1);
+        
+        Epée arme2 = new Epée("Durandal", 4,7);
+        System.out.println(arme2);
+        
+        Baton arme3 = new Baton("Chene",4,5);
+        System.out.println(arme3);
+        
+        Baton arme4 = new Baton("Charme",5,6);
+        System.out.println(arme4);
     }
     
 }
