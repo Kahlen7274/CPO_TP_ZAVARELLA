@@ -35,6 +35,9 @@ public class TP3_HeritageClasseAbstraiteInterface {
         Baton arme4 = new Baton("Charme",5,6);
         //System.out.println(arme4);
         
+        arme1.set_ATQ(85);
+        //System.out.println(arme1);
+        
         
         ArrayList<Arme> Tab = new ArrayList<Arme>();
         Tab.add(arme1);
@@ -70,6 +73,42 @@ public class TP3_HeritageClasseAbstraiteInterface {
         Tab2.add(harr);
         Tab2.add(bob2);
         //System.out.println(Tab2);
+        
+        // Création de nouveaux objets
+        
+        Magicien umerus = new Magicien("umerus", 40, true);
+        Guerrier mainge = new Guerrier("mainge", 55, false);
+        Epée frite = new Epée("frite", 1, 1);
+        Epée joutine = new Epée("joutine", 20, 20);
+        Epée djine = new Epée("djine", 60, 70);
+        Baton sceau = new Baton("sceau", 40, 32);
+        Baton Birga = new Baton("Birga", 50, 8);
+        Baton ranio = new Baton("ranio", 80, 50);
+        
+        
+        // Ajout des armes aux persos
+        
+        umerus.Ajouter_Arme(joutine);
+        umerus.Ajouter_Arme(sceau);
+        umerus.Ajouter_Arme(Birga);
+        
+        mainge.Ajouter_Arme(frite);
+        mainge.Ajouter_Arme(djine);
+        mainge.Ajouter_Arme(ranio);
+       
+        // Equipe les armes
+        
+        umerus.Equiper_Arme("joutine");
+        mainge.Equiper_Arme("frite");
+        
+        // Equipement des armes
+        
+        System.out.println(umerus);
+        System.out.println(mainge);
+        
+        // Affichage des personnages
+       
+        System.out.println(joutine.proprietaire.Nom);
         
         
     }
