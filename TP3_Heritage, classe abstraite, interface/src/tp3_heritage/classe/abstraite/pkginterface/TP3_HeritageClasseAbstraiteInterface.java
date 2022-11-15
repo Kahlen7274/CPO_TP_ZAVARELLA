@@ -43,6 +43,10 @@ public class TP3_HeritageClasseAbstraiteInterface {
         int tailleDeTab = Tab.size(); // on récupère la taille          
         System.out.println("la taille de Tab est " + tailleDeTab); 
         
+        // Test classe personnage
+        Personnage toby = new Personnage("tooby", 8);
+        System.out.println(toby);
+        
     }
     
 }
