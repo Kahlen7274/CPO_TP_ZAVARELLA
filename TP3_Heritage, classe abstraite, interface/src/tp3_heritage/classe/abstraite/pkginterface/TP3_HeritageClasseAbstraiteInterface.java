@@ -8,6 +8,9 @@ package tp3_heritage.classe.abstraite.pkginterface;
  *
  * @author matte
  */
+import Personnage.Magicien;
+import Personnage.Guerrier;
+import Personnage.Personnage;
 import Armes.Epée;
 import Armes.Baton;
 import Armes.Arme;
@@ -47,11 +50,27 @@ public class TP3_HeritageClasseAbstraiteInterface {
         Personnage toby = new Personnage("tooby", 8);
         //System.out.println(toby);
         
-        Guerrier bob = new Guerrier("rose",5,true);
+        // Test classe magicien et guerrier
+        
+        Magicien bob = new Magicien("Gandalf",65,true);
         //System.out.println(bob);
         
-        Magicien harry = new Magicien("tod",5,false);
-        System.out.println(harry);
+        Guerrier harry = new Guerrier("Conan",78,false);
+        //System.out.println(harry);
+        
+        Guerrier harr = new Guerrier("Lannister",45,true);
+        //System.out.println(harr);
+        
+        Magicien bob2 = new Magicien("Garcimore",44,false);
+        //System.out.println(bob);
+        
+        ArrayList<Personnage> Tab2 = new ArrayList<Personnage>();
+        Tab2.add(bob);
+        Tab2.add(harry);
+        Tab2.add(harr);
+        Tab2.add(bob2);
+        //System.out.println(Tab2);
+        
         
     }
     
