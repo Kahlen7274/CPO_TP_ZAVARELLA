@@ -38,14 +38,20 @@ public class TP3_HeritageClasseAbstraiteInterface {
         Tab.add(arme2);
         Tab.add(arme3);
         Tab.add(arme4);
-        System.out.println(Tab);
+        //System.out.println(Tab);
         
         int tailleDeTab = Tab.size(); // on récupère la taille          
-        System.out.println("la taille de Tab est " + tailleDeTab); 
+        //System.out.println("la taille de Tab est " + tailleDeTab); 
         
         // Test classe personnage
         Personnage toby = new Personnage("tooby", 8);
-        System.out.println(toby);
+        //System.out.println(toby);
+        
+        Guerrier bob = new Guerrier("rose",5,true);
+        //System.out.println(bob);
+        
+        Magicien harry = new Magicien("tod",5,false);
+        System.out.println(harry);
         
     }
     
