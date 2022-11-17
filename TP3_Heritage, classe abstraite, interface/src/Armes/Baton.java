@@ -13,10 +13,14 @@ import Armes.Arme;
 public class Baton extends Arme{
     int age;
     
+    public int getAge() {
+        return age;
+    }
+    
     public Baton(String nom, int ATQ, int a){
         super(nom, ATQ);
-        if(a > 100) age = 99;
-        else age = a;
+        if(a > 100) this.age = 99;
+        else this.age = a;
     }
     
     @Override

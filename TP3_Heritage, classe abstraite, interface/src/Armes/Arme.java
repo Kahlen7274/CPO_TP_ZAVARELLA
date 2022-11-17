@@ -1,5 +1,5 @@
 package Armes;
-
+import Personnage.Personnage;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -11,22 +11,35 @@ package Armes;
  */
 public class Arme {
     
-    // On définit les attributs de la classe BouteilleBiere
-    String Nom;
+    // On définit les attributs de la classe Arme
+    public String Nom;
     int ATQ;
-    
-    public Arme(String unNom, int nivATQ) {
-        // Ajout du constructeur
-        if(nivATQ > 100){
-           Nom = unNom;
-           ATQ = 100;
-        }
-        else{
-            Nom = unNom;
-            ATQ = nivATQ;
-        }
+    public Personnage proprietaire;
+
+    public int getLvlATQ() {
+        return ATQ;
     }
     
+    // methode permettant de modifier la valeur de l'attaque
+    public void set_ATQ(int nvATQ) {
+        if (nvATQ < 0) {
+            this.ATQ = 0;
+        }
+        else if(nvATQ > 100) {
+            this.ATQ = 100;
+        }
+        else {
+            this.ATQ = nvATQ;
+        }
+    }
+     
+    // Constructeur
+    public Arme(String unNom, int nvATQ) {
+        Nom = unNom;
+        ATQ = nvATQ;
+    }
+    
+      
     @Override
 
     public String toString() {

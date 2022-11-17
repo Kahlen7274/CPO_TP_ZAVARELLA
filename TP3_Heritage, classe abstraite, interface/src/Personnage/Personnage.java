@@ -5,18 +5,19 @@
 package Personnage;
 import java.util.ArrayList;
 import Armes.Arme;
+import Armes.Baton;
+import Armes.Epée;
 /**
  *
  * @author matte
  */
 public class Personnage {
     
-    // On définit les attributs de la classe BouteilleBiere
-    String Nom;
+    // On définit les attributs de la classe 
+    public String Nom;
     int Vie;
     ArrayList<Arme> inventaire = new ArrayList<Arme>();
     Arme Arme_en_main = null;
-    public static int nbPersos;
     
     public Personnage(String unNom, int nvVie) {
         // Ajout du constructeur
@@ -42,17 +43,17 @@ public class Personnage {
     public void Ajouter_Arme(Arme Arme_a_ajouter) {
         
         if (Arme_a_ajouter.proprietaire != null) {
-            System.out.println(Arme_a_ajouter.Nom + " appartiens déjà à " + Arme_a_ajouter.proprietaire.nom + " elle ne peut donc pas être associée à " + this.Nom);
+            System.out.println(Arme_a_ajouter.Nom + " appartiens déjà à " + Arme_a_ajouter.proprietaire.Nom + " elle ne peut donc pas être associée à " + this.Nom);
         }
         
         else {
         if (inventaire.size()<5) {
             this.inventaire.add(Arme_a_ajouter);
             Arme_a_ajouter.proprietaire = this;
-            System.out.println(Arme_a_ajouter + " a bien été ajoutée à " + this.nom);
+            System.out.println(Arme_a_ajouter + " a bien été ajoutée à " + this.Nom);
         }
         else {
-            System.out.println(this.nom + " possède déjà 5 armes");
+            System.out.println(this.Nom + " possède déjà 5 armes");
         }
         }
         

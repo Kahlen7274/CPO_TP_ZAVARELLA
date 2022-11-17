@@ -13,10 +13,14 @@ import Armes.Arme;
 public class Epée extends Arme{
     int finesse;
     
+     public int getFinesse() {
+        return finesse;
+    }
+    
     public Epée(String nom, int ATQ, int f){
         super(nom, ATQ);
-        if(f > 100) finesse = 99;
-        else finesse = f;
+        if(f > 100) this.finesse = 99;
+        else this.finesse = f;
     }
     
     @Override
