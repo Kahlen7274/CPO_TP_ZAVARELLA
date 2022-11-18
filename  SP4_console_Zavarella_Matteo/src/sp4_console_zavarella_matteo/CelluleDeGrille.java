@@ -44,7 +44,15 @@ public class CelluleDeGrille {
     }
 
     public Jeton recupererJeton() {
+        if(jetonCourant == null){
+            Jeton x;
+            x = jetonCourant;
+            jetonCourant = null;
+            return x;
+        }
+        else{
         return jetonCourant;
+        }
     }
     
 }

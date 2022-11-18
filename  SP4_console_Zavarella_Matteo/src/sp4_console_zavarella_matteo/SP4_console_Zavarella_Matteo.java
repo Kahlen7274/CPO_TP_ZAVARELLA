@@ -18,6 +18,13 @@ public class SP4_console_Zavarella_Matteo {
         // Test méthode Jeton
         Jeton j1 = new Jeton("rouge");
         System.out.println(j1);
+        
+        // Création d'un tableau de 42 case vide
+        PlateauDeJeu grille = new PlateauDeJeu();
+        
+        // test ajout de jeton
+        grille.ajouterJetonDansColonne(j1, 5);
+        grille.afficherGrilleSurConsole();
     }
     
 }
