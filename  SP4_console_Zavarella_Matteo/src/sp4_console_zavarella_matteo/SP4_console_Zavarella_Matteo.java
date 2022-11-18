@@ -14,7 +14,10 @@ public class SP4_console_Zavarella_Matteo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        // Test méthode Jeton
+        Jeton j1 = new Jeton("rouge");
+        System.out.println(j1);
     }
     
 }
