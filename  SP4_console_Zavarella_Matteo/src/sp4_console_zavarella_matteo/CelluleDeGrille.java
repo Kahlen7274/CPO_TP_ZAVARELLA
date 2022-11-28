@@ -11,8 +11,8 @@ package sp4_console_zavarella_matteo;
 public class CelluleDeGrille {
     // attribut de la classe
     private Jeton jetonCourant;
-      //boolean TrouNoir;
-      //boolean Desintegrateur;
+      //private boolean TrouNoir;
+      //private boolean Desintegrateur;
     
     // Constructeur
     public CelluleDeGrille(){
@@ -21,18 +21,19 @@ public class CelluleDeGrille {
         //Desintegrateur = false;
     }
     
-    // Teste la présence des jetons 
-    public boolean affecterJeton(Jeton Jeton){ // affecte le jeton en paramètre ou retourne faux si cellule pleine 
+    // verifie si la cellule est pleine   
+    public boolean presenceJeton() {
         if (jetonCourant == null) {
-            jetonCourant = Jeton;
-            return true;
-        } 
-        else {
-            System.out.print("Cellule pleine");
             return false;
+        }
+        else {
+            return true;
         }
     }
     
+    public void affecterJeton(Jeton J) {
+        jetonCourant = J;
+    }
     // renvoie la couleur du joueur 
     public String lireCouleurDuJeton(){
         if (jetonCourant == null) {
@@ -44,14 +45,13 @@ public class CelluleDeGrille {
     }
 
     public Jeton recupererJeton() {
-        if(jetonCourant == null){
-            Jeton x;
-            x = jetonCourant;
+        if(jetonCourant != null){
+            Jeton x = jetonCourant;
             jetonCourant = null;
             return x;
         }
         else{
-        return jetonCourant;
+            return (null);
         }
     }
     

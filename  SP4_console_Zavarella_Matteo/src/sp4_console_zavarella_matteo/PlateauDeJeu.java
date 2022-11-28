@@ -22,16 +22,16 @@ public class PlateauDeJeu {
     }
     
     //ajoute un jeton passé en paramètre dans la colonne dont l’indice est 
-    //aussi passé en paramètre, sur la cellule vide la plus basse
-    public boolean ajouterJetonDansColonne(Jeton unJeton, int unecolonne) {
-        for (int i = 0; i < 6; i++) {
-            if (Grille[i][unecolonne].affecterJeton(unJeton) == true) {
-                return true;
+    //aussi passé en paramètre, sur la cellule vide la plus basse    
+    public void ajouterJetonDansColonne(Jeton j, int a) {
+        for (int i = 0; i<6; i++) {
+            if (Grille[i][a].presenceJeton() == false) {
+                Grille[i][a].affecterJeton(j);
+                break;
             }
         }
-        return false;
     }
-    
+     
     public boolean grilleRemplie() {
         for (int lignes = 0; lignes < 6; lignes++) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {
@@ -43,24 +43,31 @@ public class PlateauDeJeu {
         return true;
     }
     
-    // vide la grille et redistribut les jetons aux joueurs
-    public void viderGrille() {
-        for (int lignes = 0; lignes < 6; lignes++) {
-            for (int colonnes = 0; colonnes < 7; colonnes++) {
-                Grille[lignes][colonnes] = null;
+    /*
+    public void viderGrille(Joueur R, Joueur J) {
+        for (int i = 0; i<6 ; i++) {
+            for (int j = 0; j<7; j++) {
+                Jeton jetontmp() = grille[i][j].recupererJeton();
+                if (jetontmp.lireCouleur() == "Rouge") {
+                    R.ajouterJeton();
+                }
+                else {
+                    J.ajouterJeton();
+                }
             }
         }
     }
+    */
     
     // affiche la grille sur la console
     public void afficherGrilleSurConsole(){
         System.out.print("\n" + "|");
         for (int lignes = 5; lignes >= 0; lignes--) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {
-                if ("R".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
+                if ("rouge".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("R|");
                 } 
-                else if ("J".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
+                else if ("jaune".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("J|");
                 } 
                 else {
@@ -76,9 +83,10 @@ public class PlateauDeJeu {
     }
     
     // renvoie true si la cellule de coordonnées [x][y] est occupée par un jeton, et false sinon.  
-    public boolean celluleOccupee(int uneligne, int unecolonne) {
+    public boolean presenceJeton(int uneligne, int unecolonne) {
         return Grille[uneligne][unecolonne] != null;
     }
+
     
     //renvoie la couleur du jeton de la cellule ciblée par les coodonnées
     public String lireCouleurDuJeton(int uneligne, int unecolonne) {
