@@ -38,6 +38,25 @@ public class Partie {
         }
     }
     
-    
+    //Initilisation d'une partie  
+    public void initialiserPartie() {
+        
+        plateau = new PlateauDeJeu();
+        Random r = new Random();
+
+        //creation des jetons joueur1
+        for (int i = 0; i <= 20; i++) {
+            Jeton jeton = new Jeton(ListeJoueurs[0].couleur);
+            ListeJoueurs[0].ajouterJeton(jeton);
+
+        }
+        //creation des jetons joueur2
+        for (int j = 0; j <= 20; j++) {
+            Jeton jeton = new Jeton(ListeJoueurs[1].couleur);
+            ListeJoueurs[1].ajouterJeton(jeton);
+
+        }
+    }
    
+    
 }
