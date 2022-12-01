@@ -92,6 +92,97 @@ public class PlateauDeJeu {
     public String lireCouleurDuJeton(int uneligne, int unecolonne) {
         return Grille[uneligne][unecolonne].lireCouleurDuJeton();
     }
-
     
+    // methode principal qui va renvoyer un boolean pour savoir qui à gagné
+    public boolean etreGagnantePourCouleur(String z) {
+        if (ligneGagnantePourCouleur(z) == true || colonneGagnantePourCouleur(z) == true || diagonaleMontanteGagnantePourCouleur(z) == true || diagonaleDescendanteGagnantePourCouleur(z) == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    // methode nous permettant de verifier si le joueur à 4 jetons aligné  
+    public boolean ligneGagnantePourCouleur(String z) {
+        int cpt = 0;
+        boolean res = false;
+        for (int i = 0; i<6; i++) {
+            for (int j = 0; j<7; j++) {
+                if (Grille[i][j].lireCouleurDuJeton() == z) {
+                    cpt += 1;
+                    if (cpt == 4) {
+                        res = true;                       
+                        return res;                        
+                    }
+                }
+                else {
+                    cpt = 0;
+                }
+            }
+        }
+        return res;
+    }
+    // methode nous permettant de verifier si le joueur à 4 jetons aligné en colonne
+    public boolean colonneGagnantePourCouleur(String z) {
+        int cpt = 0;
+        boolean res = false;
+        for (int j = 0; j<7; j++) { // booucle for imbriqué l'une dans l'autre
+            for (int i = 0; i<6; i++) {
+                if (Grille[i][j].lireCouleurDuJeton() == z) {
+                    cpt += 1;
+                    if (cpt == 4) {
+                        res = true;                       
+                        return res;                        
+                    }
+                }
+                else {
+                    cpt = 0;
+                }
+            }
+        }
+        return res;
+
+        
+    }
+     // methode nous permettant de verifier si le joueur à 4 jetons aligné en diagonal montante
+    public boolean diagonaleMontanteGagnantePourCouleur(String z) {
+        boolean res = false;
+        for (int i = 3; i<6; i++) {
+            for (int j = 0; j<4; j++) {
+                if (Grille[i][j].lireCouleurDuJeton() == z) {
+                    if (Grille[i-1][j+1].lireCouleurDuJeton() == z && Grille[i-2][j+2].lireCouleurDuJeton() == z && Grille[i-3][j+3].lireCouleurDuJeton() == z) {
+                        res = true;
+                        return res;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    // methode nous permettant de verifier si le joueur à 4 jetons aligné en diagonal Descendante
+    public boolean diagonaleDescendanteGagnantePourCouleur(String z) {
+        boolean res = false;
+        for (int i = 3; i<6; i++) {
+            for (int j = 3; j<7; j++) {
+                if (Grille[i][j].lireCouleurDuJeton() == z) {
+                    if (Grille[i-1][j-1].lireCouleurDuJeton() == z && Grille[i-2][j-2].lireCouleurDuJeton() == z && Grille[i-3][j-3].lireCouleurDuJeton() == z){
+                        res = true;
+                        return res;
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    public boolean colonneRemplie(int a) {
+        boolean res = true;
+        for (int i = 0; i<6; i++) {
+            if (Grille[i][a-1].presenceJeton() == false) {
+                res = false;
+                return res;
+            }
+        }
+        return res;
+    }
 }
