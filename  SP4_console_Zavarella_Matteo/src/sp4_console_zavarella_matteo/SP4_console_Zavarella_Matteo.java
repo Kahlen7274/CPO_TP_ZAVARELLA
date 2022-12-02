@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package sp4_console_zavarella_matteo;
-
 /**
  *
  * @author matte
@@ -13,6 +12,7 @@ public class SP4_console_Zavarella_Matteo {
     /**
      * @param args the command line arguments
      */
+       
     public static void main(String[] args) {
         
         // Test méthode Jeton

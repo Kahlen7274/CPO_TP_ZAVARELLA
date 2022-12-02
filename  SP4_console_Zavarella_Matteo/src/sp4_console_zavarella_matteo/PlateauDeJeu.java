@@ -60,17 +60,23 @@ public class PlateauDeJeu {
     */
     
     // affiche la grille sur la console
-    public void afficherGrilleSurConsole(){
+   
+     public void afficherGrilleSurConsole() {
         System.out.print("\n" + "|");
         for (int lignes = 5; lignes >= 0; lignes--) {
             for (int colonnes = 0; colonnes < 7; colonnes++) {
                 if ("rouge".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("R|");
-                } 
-                else if ("jaune".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
+                } else if ("aune".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("J|");
-                } 
-                else {
+                } else if (Grille[lignes][colonnes].presenceTrouNoir() == true) {
+                    System.out.print("N|");
+                } else if (Grille[lignes][colonnes].presenceDesintegrateur() == true) {
+                    //if(CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
+
+                    // }
+                    System.out.print("D|");
+                } else {
                     System.out.print("-|");
                 }
             }
@@ -81,7 +87,7 @@ public class PlateauDeJeu {
             }
         }
     }
-    
+     
     // renvoie true si la cellule de coordonnées [x][y] est occupée par un jeton, et false sinon.  
     public boolean presenceJeton(int uneligne, int unecolonne) {
         return Grille[uneligne][unecolonne] != null;
@@ -174,7 +180,22 @@ public class PlateauDeJeu {
         }
         return res;
     }
-
+    
+    // lorsqu’un jeton est capturé ou détruit, décale d’une ligne vers le bas les jetons situés au dessus de la cellule libérée.
+    public void tasserColonne(int unecolonne) {
+        int lignes = 0;
+        while (Grille[lignes][unecolonne].jetonCourant != null) {
+                lignes++;
+            
+        }
+        for (int i = lignes; i < 5; i++) {
+            Grille[i][unecolonne].jetonCourant = Grille[i + 1][unecolonne].jetonCourant;
+            Grille[i+1][unecolonne].jetonCourant = null;
+        }
+        Grille[5][unecolonne].jetonCourant = null;
+    }
+    
+    // renvoie true si la colonne dont l’indice est passé en paramètre est remplie
     public boolean colonneRemplie(int a) {
         boolean res = true;
         for (int i = 0; i<6; i++) {
@@ -184,5 +205,57 @@ public class PlateauDeJeu {
             }
         }
         return res;
+    }
+    
+    // Cette méthode appelle tout simplement la méthode presenceTrouNoir() de l’objet CelluleDeGrille
+    public boolean presenceTrouNoir(int m, int z) {
+        if (Grille[m-1][z-1].presenceTrouNoir() == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    // Cette méthode appelle tout simplement la méthode presenceTrouNoir() de l’objet CelluleDeGrille présent sur la grille aux coordonnées [x][y].
+    public boolean placerTrouNoir(int uneligne, int unecolonne) {
+        return Grille[uneligne][unecolonne].placerTrouNoir();
+    }
+    
+    // supprime un trou noir à l’endroit indiqué
+    public boolean suppprimerTrouNoir(int x, int y) {
+        boolean res = false;
+        if (Grille[x-1][y-1].presenceTrouNoir() == true) {
+            Grille[x-1][y-1].supprimerTrouNoir();
+            res = true;
+            System.out.println("Trou noir, jeton absorbé");
+            return res;
+        }
+        return res;
+    }
+    
+    // ajoute un désintégrateur à l’endroit indiqué.
+    public boolean placerDesintegrateur(int uneligne, int unecolonne) {
+        return Grille[uneligne][unecolonne].placerDesintegrateur();
+    }
+    
+    // supprime un désintégrateur à l’endroit indiqué
+    public boolean supprimerDesintegrateur(int uneligne, int unecolonne) {
+        return Grille[uneligne][unecolonne].supprimerDesintegrateur();
+    }
+
+    // retourne true si la cellule dont les coordonnées sont passées en paramètre contient un désintegrateur, et false sinon
+    public boolean précenseDesintegrateur(int uneligne, int unecolonne) {
+        return Grille[uneligne][unecolonne].presenceDesintegrateur();
+    }
+
+    // supprime le jeton de la cellule visée
+    public boolean supprimerJeton(int uneligne, int unecolonne) {
+        return Grille[uneligne][unecolonne].supprimerJeton();
+    }
+
+    // enlève le jeton de la cellule visée et renvoie une référence vers ce jeton.
+    public Jeton recupererJeton(int uneligne, int unecolonne) {
+        return Grille[uneligne][unecolonne].recupererJeton();
     }
 }

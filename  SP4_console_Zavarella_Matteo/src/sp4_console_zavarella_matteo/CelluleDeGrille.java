@@ -10,9 +10,10 @@ package sp4_console_zavarella_matteo;
  */
 public class CelluleDeGrille {
     // attribut de la classe
-    private Jeton jetonCourant;
-      //private boolean TrouNoir;
-      //private boolean Desintegrateur;
+    
+    Jeton jetonCourant;
+    private boolean TrouNoir;
+    private boolean Desintegrateur;
     
     // Constructeur
     public CelluleDeGrille(){
@@ -43,7 +44,32 @@ public class CelluleDeGrille {
             return jetonCourant.lireCouleur();
         }
     }
-
+    
+    // méthode qui place les troues noir
+    public boolean placerTrouNoir() {
+        if (TrouNoir == false) {
+            TrouNoir = true;
+            System.out.println("Ajout de Trou Noir effectuÃ©");
+            return true;
+        } else {
+            System.out.println("Trou Noir deja present");
+            return false;
+        }
+    }
+    
+    // Teste la présence des troues Noir 
+    public boolean presenceTrouNoir() {
+        if (TrouNoir == false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public void supprimerTrouNoir() {
+        TrouNoir = false;
+    }
+    
     public Jeton recupererJeton() {
         if(jetonCourant != null){
             Jeton x = jetonCourant;
@@ -55,4 +81,82 @@ public class CelluleDeGrille {
         }
     }
     
+    // Supprime le jeton visé 
+    public boolean supprimerJeton() {
+        if (jetonCourant == null) {
+          //  System.out.print("Jeton innexistant ");
+            return false;
+        } else {
+            jetonCourant = null;
+            return true;
+        }
+    }
+    
+    // méthode qui place les désintégrateurs 
+    public boolean placerDesintegrateur() {
+        if (Desintegrateur == false) {
+            Desintegrateur = true;
+            System.out.println("Ajout du desintegrateur effectué");
+            return true;
+        } else {
+            System.out.println("desintegrateur deja present");
+            return false;
+        }
+
+    }
+    
+    // teste la présence des désintégrateurs 
+    public boolean presenceDesintegrateur() {
+        if (Desintegrateur == false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // supprime le désintégrateur présent de la cellule
+    public boolean supprimerDesintegrateur() {
+        if (Desintegrateur == true) {
+            Desintegrateur = false;
+            System.out.println("Suppression du desintegrateur effectué");
+            return true;
+        } else {
+            System.out.println("pas de desintegrateur present");
+            return false;
+        }
+    }
+    
+    // passe un troue noir en actif 
+    public boolean activerTrouNoir() {
+        if (TrouNoir == true) {
+            jetonCourant = null; // vide la cellule
+            TrouNoir = false; // disparition du Trou Noir
+            System.out.println("Activation du Trou Noir");
+            return true;
+        } else {
+            System.out.println("Pas de Trou Noir dans cette cellule");
+            return false;
+        }
+    }
+    
+    @Override
+    public String toString() {
+        if (this.presenceJeton() == true) {
+            if (this.jetonCourant.lireCouleur() == "rouge") {
+                return "R";
+            }
+            else {
+                return "J";
+            }
+        }
+        if (this.TrouNoir == true) {
+            return "@";
+        }
+        if (this.Desintegrateur == true && this.TrouNoir == false) {
+            return "D";
+        }
+        else {
+            return ".";
+        }
+    }
 }
