@@ -15,12 +15,16 @@ public class joueur {
     private String nom;
     String couleur;
     ArrayList<Jeton> reserveJeton = new ArrayList<Jeton>(); // tableau dynamique de jeton
-    int nombreJetonRestants = reserveJeton.size(); // on recupère sa taille
-    //int nombreDesintegrateurs;
+    int nombreDesintegrateurs;
     
     // Constructeur
     public joueur(String jo) {
         nom = jo;
+    }
+    
+    public int nombreDeJetons(){
+        int nb = reserveJeton.size(); // on recupère sa taille
+        return nb;
     }
     
     // affecte couleur passé en paramètre 
@@ -33,10 +37,24 @@ public class joueur {
         reserveJeton.add(jeton);
     }
     
+    // incrémente le nombre de désintégrateurs du joueur.
+    public void obtenirDesintegrateur() {
+        nombreDesintegrateurs++;
+    }
+    
+    //  décrémente le nombre de désintégrateurs
+    public boolean utiliserDesintegrateur() {
+        if (nombreDesintegrateurs==0){
+            return false;
+        }
+        else{
+            nombreDesintegrateurs=nombreDesintegrateurs-1;
+            return true;
+        }
+    }
    
     @Override
     public String toString() {
         return this.nom;
-    }
-    
+    }   
 }
