@@ -23,13 +23,14 @@ public class PlateauDeJeu {
     
     //ajoute un jeton passé en paramètre dans la colonne dont l’indice est 
     //aussi passé en paramètre, sur la cellule vide la plus basse    
-    public void ajouterJetonDansColonne(Jeton j, int a) {
+    public boolean ajouterJetonDansColonne(Jeton j, int a) {
         for (int i = 0; i<6; i++) {
             if (Grille[i][a].presenceJeton() == false) {
                 Grille[i][a].affecterJeton(j);
-                break;
+                return true;
             }
         }
+        return false;
     }
      
     public boolean grilleRemplie() {
@@ -43,21 +44,23 @@ public class PlateauDeJeu {
         return true;
     }
     
-    /*
-    public void viderGrille(Joueur R, Joueur J) {
+    
+    public void viderGrille(joueur R, joueur J) {
         for (int i = 0; i<6 ; i++) {
             for (int j = 0; j<7; j++) {
-                Jeton jetontmp() = grille[i][j].recupererJeton();
-                if (jetontmp.lireCouleur() == "Rouge") {
-                    R.ajouterJeton();
-                }
-                else {
-                    J.ajouterJeton();
+                Jeton jetontmp = Grille[i][j].recupererJeton();
+                if (jetontmp != null) {
+                    if (jetontmp.lireCouleur() == "rouge") {
+                        R.ajouterJeton(jetontmp);
+                    }
+                    else {
+                        J.ajouterJeton(jetontmp);
+                    }
                 }
             }
         }
     }
-    */
+    
     
     // affiche la grille sur la console
    
@@ -67,10 +70,10 @@ public class PlateauDeJeu {
             for (int colonnes = 0; colonnes < 7; colonnes++) {
                 if ("rouge".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("R|");
-                } else if ("aune".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
+                } else if ("jaune".equals(Grille[lignes][colonnes].lireCouleurDuJeton())) {
                     System.out.print("J|");
                 } else if (Grille[lignes][colonnes].presenceTrouNoir() == true) {
-                    System.out.print("N|");
+                    System.out.print("@|");
                 } else if (Grille[lignes][colonnes].presenceDesintegrateur() == true) {
                     //if(CellulesJeu[lignes][colonnes].presenceTrouNoir()==true){
 
@@ -114,7 +117,7 @@ public class PlateauDeJeu {
         boolean res = false;
         for (int i = 0; i<6; i++) {
             for (int j = 0; j<7; j++) {
-                if (Grille[i][j].lireCouleurDuJeton() == z) {
+                if (Grille[i][j].lireCouleurDuJeton().equals(z)) {
                     cpt += 1;
                     if (cpt == 4) {
                         res = true;                       
@@ -134,7 +137,7 @@ public class PlateauDeJeu {
         boolean res = false;
         for (int j = 0; j<7; j++) { // booucle for imbriqué l'une dans l'autre
             for (int i = 0; i<6; i++) {
-                if (Grille[i][j].lireCouleurDuJeton() == z) {
+                if (Grille[i][j].lireCouleurDuJeton().equals(z)) {
                     cpt += 1;
                     if (cpt == 4) {
                         res = true;                       
@@ -155,8 +158,8 @@ public class PlateauDeJeu {
         boolean res = false;
         for (int i = 3; i<6; i++) {
             for (int j = 0; j<4; j++) {
-                if (Grille[i][j].lireCouleurDuJeton() == z) {
-                    if (Grille[i-1][j+1].lireCouleurDuJeton() == z && Grille[i-2][j+2].lireCouleurDuJeton() == z && Grille[i-3][j+3].lireCouleurDuJeton() == z) {
+                if (Grille[i][j].lireCouleurDuJeton().equals(z)) {
+                    if (Grille[i-1][j+1].lireCouleurDuJeton().equals(z) && Grille[i-2][j+2].lireCouleurDuJeton().equals(z) && Grille[i-3][j+3].lireCouleurDuJeton().equals(z)) {
                         res = true;
                         return res;
                     }
@@ -170,8 +173,8 @@ public class PlateauDeJeu {
         boolean res = false;
         for (int i = 3; i<6; i++) {
             for (int j = 3; j<7; j++) {
-                if (Grille[i][j].lireCouleurDuJeton() == z) {
-                    if (Grille[i-1][j-1].lireCouleurDuJeton() == z && Grille[i-2][j-2].lireCouleurDuJeton() == z && Grille[i-3][j-3].lireCouleurDuJeton() == z){
+                if (Grille[i][j].lireCouleurDuJeton().equals(z)) {
+                    if (Grille[i-1][j-1].lireCouleurDuJeton().equals(z) && Grille[i-2][j-2].lireCouleurDuJeton() == z && Grille[i-3][j-3].lireCouleurDuJeton() == z){
                         res = true;
                         return res;
                     }
@@ -209,12 +212,7 @@ public class PlateauDeJeu {
     
     // Cette méthode appelle tout simplement la méthode presenceTrouNoir() de l’objet CelluleDeGrille
     public boolean presenceTrouNoir(int m, int z) {
-        if (Grille[m-1][z-1].presenceTrouNoir() == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return Grille[m-1][z-1].presenceTrouNoir() == true;
     }
     
     // Cette méthode appelle tout simplement la méthode presenceTrouNoir() de l’objet CelluleDeGrille présent sur la grille aux coordonnées [x][y].
@@ -225,8 +223,8 @@ public class PlateauDeJeu {
     // supprime un trou noir à l’endroit indiqué
     public boolean suppprimerTrouNoir(int x, int y) {
         boolean res = false;
-        if (Grille[x-1][y-1].presenceTrouNoir() == true) {
-            Grille[x-1][y-1].supprimerTrouNoir();
+        if (Grille[x][y].presenceTrouNoir() == true) {
+            Grille[x][y].supprimerTrouNoir();
             res = true;
             System.out.println("Trou noir, jeton absorbé");
             return res;
