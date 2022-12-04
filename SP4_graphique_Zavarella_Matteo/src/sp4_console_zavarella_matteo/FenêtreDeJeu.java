@@ -4,6 +4,9 @@
  */
 package sp4_console_zavarella_matteo;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author matte
@@ -24,7 +27,8 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
         
         for (int i = 0; i<6; i++) {
             for (int j = 0; j<7; j++) {
-                CelluleDeGrille_Graphique cellGraph = new CelluleDeGrille_Graphique(plateau.Grille[i][j]);
+                CelluleDeGrille_Graphique cellGraph;
+                cellGraph = new CelluleDeGrille_Graphique(plateau.Grille[i][j]);
                 panneau_grille.add(cellGraph);
             }
         }
@@ -188,10 +192,10 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
         getContentPane().add(btn_col0, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         btn_col1.setText("2");
-        getContentPane().add(btn_col1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+        getContentPane().add(btn_col1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
 
         btn_col2.setText("3");
-        getContentPane().add(btn_col2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
+        getContentPane().add(btn_col2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         btn_col3.setText("4");
         btn_col3.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +203,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
                 btn_col3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_col3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
+        getContentPane().add(btn_col3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
         btn_col4.setText("5");
         btn_col4.addActionListener(new java.awt.event.ActionListener() {
@@ -207,13 +211,18 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
                 btn_col4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_col4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+        getContentPane().add(btn_col4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
         btn_col5.setText("6");
-        getContentPane().add(btn_col5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
+        getContentPane().add(btn_col5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
 
         btn_col6.setText("7");
-        getContentPane().add(btn_col6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
+        btn_col6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_col6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
 
         setBounds(0, 0, 1108, 672);
     }// </editor-fold>//GEN-END:initComponents
@@ -238,7 +247,14 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
         // TODO add your handling code here:
         panneau_info_joueur.setVisible(true);
         panneau_info_partie.setVisible(true);
+        initialiserPartie();
+        
+        
     }//GEN-LAST:event_btn_startActionPerformed
+
+    private void btn_col6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_col6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,6 +289,77 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
                 new FenêtreDeJeu().setVisible(true);
             }
         });
+    }
+    
+    //Initilisation d'une partie  
+    public void initialiserPartie() {
+        
+        // affichage
+        
+        plateau.viderGrille(joueurCourant , joueurCourant ); // créé et afficher grille
+
+        String nomJoueur1 = nom_joueur1.getText();
+        joueur joueur1 = new joueur(nomJoueur1);
+        
+        String nomJoueur2 = nom_joueur2.getText();
+        joueur joueur2 = new joueur(nomJoueur2);
+        
+        ListeJoueurs[0] = joueur1;
+        ListeJoueurs[1] = joueur2;
+        plateau = new PlateauDeJeu();
+        
+        attribuerCouleursAuxJoueurs();
+        Random couleur = new Random();
+        int alea = couleur.nextInt(2);
+        
+        if (alea == 1) {
+            joueurCourant = ListeJoueurs[0];
+            System.out.println(ListeJoueurs[0].nom + " commence");
+        } else {
+            joueurCourant = ListeJoueurs[1];
+            System.out.println(ListeJoueurs[1].nom + " commence");
+        }
+
+        for (int i = 0; i < 21; i++) { //donner les jetons aux joueurs
+            Jeton unJeton = new Jeton(ListeJoueurs[0].couleur);
+            ListeJoueurs[0].ajouterJeton(unJeton);
+            Jeton unJeton2 = new Jeton(ListeJoueurs[1].couleur);
+            ListeJoueurs[1].ajouterJeton(unJeton2);
+
+        }
+
+        
+        // on place les trous noirs et desintegrateurs
+        Random position = new Random();
+        int compteur = 0;
+        for (int i = 0; i < 5; i++) {
+            int lig = position.nextInt(5);
+            int col = position.nextInt(6);
+            if (compteur < 2) {
+                if (!plateau.placerDesintegrateur(lig, col)) {
+                    compteur--;
+                }
+                compteur++;
+            }
+            if (!plateau.placerTrouNoir(lig, col)) {
+                i--;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            int lig = position.nextInt(5);
+            int col = position.nextInt(6);
+            if (!plateau.placerDesintegrateur(lig, col)) {
+                i--;
+            }
+        }
+    }   
+    
+    // méthode qui distribue une couleur aléatoire aux deux joueurs, rouge ou jaune
+    public void attribuerCouleursAuxJoueurs() {
+        // couleur Jaune attribué à 0
+        // couleur Jaune attribué à 1       
+        ListeJoueurs[0].couleur = "rouge";
+        ListeJoueurs[1].couleur = "jaune";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
