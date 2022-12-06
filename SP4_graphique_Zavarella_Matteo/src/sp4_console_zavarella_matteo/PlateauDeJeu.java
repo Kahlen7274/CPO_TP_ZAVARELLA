@@ -198,6 +198,12 @@ public class PlateauDeJeu {
         Grille[5][unecolonne].jetonCourant = null;
     }
     
+    public void tasserGrille(){
+        for(int i = 0; i<7 ;i++){
+            tasserColonne(i);
+        }
+    }
+    
     // renvoie true si la colonne dont l’indice est passé en paramètre est remplie
     public boolean colonneRemplie(int a) {
         boolean res = true;

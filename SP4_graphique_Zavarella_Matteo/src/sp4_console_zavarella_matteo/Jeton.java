@@ -12,7 +12,7 @@ package sp4_console_zavarella_matteo;
 public class Jeton {
     // On définit les attributs
     
-    private String couleur; // variable qui permet de renvoyer la couleur jaune ou rouge
+    String couleur; // variable qui permet de renvoyer la couleur jaune ou rouge
     
     // Constructeur
     public Jeton(String unecouleur){

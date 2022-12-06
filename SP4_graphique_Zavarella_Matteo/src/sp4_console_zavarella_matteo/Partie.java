@@ -25,10 +25,15 @@ public class Partie {
     
     // méthode qui distribue une couleur aléatoire aux deux joueurs, rouge ou jaune
     public void attribuerCouleursAuxJoueurs() {
-        // couleur Jaune attribué à 0
-        // couleur Jaune attribué à 1       
-        ListeJoueurs[0].couleur = "rouge";
-        ListeJoueurs[1].couleur = "jaune";
+        Random r = new Random();
+        int n = r.nextInt(1);
+        if (n == 0) {
+            ListeJoueurs[0].couleur = "jaune";
+            ListeJoueurs[1].couleur = "rouge";
+        } else {
+            ListeJoueurs[0].couleur = "rouge";
+            ListeJoueurs[1].couleur = "jaune";
+        }
     }
     
     //Initilisation d'une partie  
@@ -99,7 +104,6 @@ public class Partie {
         initialiserPartie();
         while ((plateau.etreGagnantePourCouleur("rouge") == false) && (plateau.grilleRemplie() == false) && (plateau.etreGagnantePourCouleur("jaune") == false)) {
 
-            plateau.afficherGrilleSurConsole();
             System.out.println("1) Pose un jeton");
             System.out.println("2) Désintégrer un jeton");
             System.out.println("3) Récupérer un jeton");
