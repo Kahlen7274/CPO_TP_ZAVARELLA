@@ -13,10 +13,10 @@ import javax.swing.JButton;
 public class CelluleDeGrille_Graphique extends JButton{
     CelluleDeGrille celluleAssociee;
     ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/images/celluleVide.png"));
-    ImageIcon img_desint = new javax.swing.ImageIcon(getClass().getResource("/images/Desintegrateur (1).png"));
+    ImageIcon img_desint = new javax.swing.ImageIcon(getClass().getResource("/images/DS.png"));
     ImageIcon img_jetonRouge = new javax.swing.ImageIcon(getClass().getResource("/images/jetonRouge.png"));
     ImageIcon img_jetonJaune = new javax.swing.ImageIcon(getClass().getResource("/images/jetonJaune.png"));
-    ImageIcon img_TrouNoir = new javax.swing.ImageIcon(getClass().getResource("/images/TrouNoir (2).png"));
+    ImageIcon img_TrouNoir = new javax.swing.ImageIcon(getClass().getResource("/images/TN.png"));
     
     public CelluleDeGrille_Graphique(CelluleDeGrille uneCellule) {
         celluleAssociee = uneCellule;
