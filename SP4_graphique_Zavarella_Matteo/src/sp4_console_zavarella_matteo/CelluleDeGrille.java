@@ -12,7 +12,7 @@ public class CelluleDeGrille {
     // attribut de la classe
     
     Jeton jetonCourant;
-    private boolean TrouNoir;
+    boolean TrouNoir;
     private boolean Desintegrateur;
     
     // Constructeur

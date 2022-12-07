@@ -642,28 +642,42 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
 
         }
 
-        
-        // on place les trous noirs et desintegrateurs
-        Random position = new Random();
-        int compteur = 0;
-        for (int i = 0; i < 5; i++) {
-            int lig = position.nextInt(5);
-            int col = position.nextInt(6);
-            if (compteur < 2) {
-                if (!plateau.placerDesintegrateur(lig, col)) {
-                    compteur--;
-                }
-                compteur++;
+         Random r = new Random();
+         
+        //placer les trous noir 
+        int cpt1 = 0;
+        while (cpt1 < 5) {
+            int a = r.nextInt(5);    //tirer aleatoirement un entier  
+            int b = r.nextInt(6);
+            if (plateau.Grille[a][b].TrouNoir == false) {
+                plateau.placerTrouNoir(a, b);
+                cpt1 += 1;
+
             }
-            if (!plateau.placerTrouNoir(lig, col)) {
-                i--;
-            }
+
         }
-        for (int i = 0; i < 3; i++) {
-            int lig = position.nextInt(5);
-            int col = position.nextInt(6);
-            if (!plateau.placerDesintegrateur(lig, col)) {
-                i--;
+
+        //placer les desintegrateurs
+        int cpt = 0;
+        while (cpt < 2) {
+
+            int x = r.nextInt(5);    //tirer aleatoirement un entier  
+            int y = r.nextInt(6);
+            if ((plateau.Grille[x][y].  TrouNoir == false) && (plateau.Grille[x][y].presenceDesintegrateur() == false)) {
+                plateau.placerDesintegrateur(x, y);
+                cpt += 1;
+            }
+
+        }
+        int cpt2 = 0;
+
+        while (cpt2 < 3) {
+
+            int x = r.nextInt(5);    //tirer aleatoirement un entier  
+            int y = r.nextInt(6);
+            if ((plateau.Grille[x][y].TrouNoir == false) && (plateau.Grille[x][y].presenceDesintegrateur() == false)) {
+                plateau.placerDesintegrateur(x, y);
+                cpt2 += 1;
             }
         }
     }   
