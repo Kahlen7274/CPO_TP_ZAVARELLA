@@ -688,7 +688,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
 
             int x = r.nextInt(5);    //tirer aleatoirement un entier  
             int y = r.nextInt(6);
-            if ((plateau.Grille[x][y].  TrouNoir == false) && (plateau.Grille[x][y].presenceDesintegrateur() == false)) {
+            if ((plateau.Grille[x][y].  TrouNoir == true) && (plateau.Grille[x][y].presenceDesintegrateur() == false)) {
                 plateau.placerDesintegrateur(x, y);
                 cpt += 1;
             }
