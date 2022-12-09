@@ -208,7 +208,7 @@ public class PlateauDeJeu {
     public boolean colonneRemplie(int a) {
         boolean res = true;
         for (int i = 0; i<6; i++) {
-            if (Grille[i][a-1].presenceJeton() == false) {
+            if (Grille[i][a].presenceJeton() == false) {
                 res = false;
                 return res;
             }

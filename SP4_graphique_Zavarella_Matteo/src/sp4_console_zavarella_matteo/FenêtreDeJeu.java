@@ -66,6 +66,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
 
                         }
                         plateau.tasserGrille();
+                        DebloquerBoutonColonne();
                         panneau_grille.repaint();
 
                         lbl_j1_nbdesint.setText(ListeJoueurs[0].nombreDesintegrateurs + "");
@@ -389,7 +390,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
     private void btn_col4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col4ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(4);
-        if (plateau.colonneRemplie(6) == true) {
+        if (plateau.colonneRemplie(4) == true) {
             btn_col4.setEnabled(false);
         }
         joueurSuivant();
@@ -398,7 +399,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
     private void btn_col3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col3ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(3);
-        if (plateau.colonneRemplie(6) == true) {
+        if (plateau.colonneRemplie(3) == true) {
             btn_col3.setEnabled(false);
         }
         joueurSuivant();
@@ -407,7 +408,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
     private void btn_col0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col0ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(0);
-        if (plateau.colonneRemplie(6) == true) {
+        if (plateau.colonneRemplie(0) == true) {
             btn_col0.setEnabled(false);
         }
         joueurSuivant();
@@ -439,7 +440,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
     private void btn_col1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col1ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(1);
-        if (plateau.colonneRemplie(6) == true) {
+        if (plateau.colonneRemplie(1) == true) {
             btn_col1.setEnabled(false);
         }
         joueurSuivant();
@@ -448,7 +449,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
     private void btn_col2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col2ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(2);
-        if (plateau.colonneRemplie(6) == true) {
+        if (plateau.colonneRemplie(2) == true) {
             btn_col2.setEnabled(false);
         }
         joueurSuivant();
@@ -457,7 +458,7 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
     private void btn_col5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col5ActionPerformed
         // TODO add your handling code here:
         jouerDansColonne(5);
-        if (plateau.colonneRemplie(6) == true) {
+        if (plateau.colonneRemplie(5) == true) {
             btn_col5.setEnabled(false);
         }
         joueurSuivant();
@@ -713,6 +714,48 @@ public class FenêtreDeJeu extends javax.swing.JFrame {
         // couleur Jaune attribué à 1       
         ListeJoueurs[0].couleur = "rouge";
         ListeJoueurs[1].couleur = "jaune";
+    }
+    
+     public void DebloquerBoutonColonne() {
+        for (int i = 0; i<7; i++) {
+            if (plateau.colonneRemplie(i) == false) {
+                if (i == 0) {
+                    if (btn_col0.isEnabled() == true) {
+                        btn_col0.setEnabled(false);
+                    }
+                }
+                if (i == 1) {
+                    if (btn_col1.isEnabled() == false) {
+                        btn_col1.setEnabled(true);
+                    }
+                }
+                if (i == 2) {
+                    if (btn_col2.isEnabled() == false) {
+                        btn_col2.setEnabled(true);
+                    }
+                }
+                if (i == 3) {
+                    if (btn_col3.isEnabled() == false) {
+                        btn_col3.setEnabled(true);
+                    }
+                }
+                if (i == 4) {
+                    if (btn_col4.isEnabled() == false) {
+                        btn_col4.setEnabled(true);
+                    }
+                }
+                if (i == 5) {
+                    if (btn_col5.isEnabled() == false) {
+                        btn_col5.setEnabled(true);
+                    }
+                }
+                if (i == 6) {
+                    if (btn_col6.isEnabled() == false) {
+                        btn_col6.setEnabled(true);
+                    }
+                }
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
